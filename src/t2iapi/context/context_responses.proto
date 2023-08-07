@@ -51,5 +51,5 @@ For each pm:EnsembleContextState to identify, an Identification object shall be 
  */
 message EnsembleContextIndicateMembershipWithIdentificationResponse {
     BasicResponse status = 1;
-    repeated Identification identification = 2;
+    repeated IdentificationList identification_list = 3;
 }

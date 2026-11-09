@@ -39,20 +39,20 @@ jobs:
         with:
           gradle-version: ${{ env.GRADLE_VERSION }}
 
-      - name: Publish package
-        working-directory: ./java
-        run: ./gradlew publish -x jar -x sourcesJar -x javadocJar
-        env:
-          MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
-          MAVEN_GPG_PRIVATE_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
-
-      - name: Deploy package
-        working-directory: ./java
-        run: ./gradlew jreleaserDeploy
-        env:
-          JRELEASER_MAVENCENTRAL_STAGE: UPLOAD
-          CENTRAL_PORTAL_USERNAME: ${{ secrets.CENTRAL_PORTAL_USERNAME }}
-          CENTRAL_PORTAL_TOKEN: ${{ secrets.CENTRAL_PORTAL_TOKEN }}
+#      - name: Publish package
+#        working-directory: ./java
+#        run: ./gradlew publish -x jar -x sourcesJar -x javadocJar
+#        env:
+#          MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+#          MAVEN_GPG_PRIVATE_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+#
+#      - name: Deploy package
+#        working-directory: ./java
+#        run: ./gradlew jreleaserDeploy
+#        env:
+#          JRELEASER_MAVENCENTRAL_STAGE: UPLOAD
+#          CENTRAL_PORTAL_USERNAME: ${{ secrets.CENTRAL_PORTAL_USERNAME }}
+#          CENTRAL_PORTAL_TOKEN: ${{ secrets.CENTRAL_PORTAL_TOKEN }}
 
       - name: Download integration test results
         if: startsWith(github.ref, 'refs/tags/')
